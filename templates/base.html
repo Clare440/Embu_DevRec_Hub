@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Embu Dev Hub{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="topbar">
+    <div class="topbar-inner">
+        <a class="brand" href="{{ url_for('dashboard') }}">
+            <span class="brand-mark">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+            </span>
+            <span class="brand-text"><strong>Embu Dev Hub</strong><span>API Records Secure System</span></span>
+        </a>
+        <nav class="nav-links">
+            <a href="{{ url_for('dashboard') }}" class="{{ 'active' if request.endpoint == 'dashboard' }}">Dashboard</a>
+            <a href="{{ url_for('search') }}" class="{{ 'active' if request.endpoint in ('search', 'insert') }}">API Records</a>
+        </nav>
+        <div class="nav-user">
+            <span class="avatar">{{ current_user.username[:1] }}</span>
+            <span class="who">{{ current_user.username }}<small>{{ current_user.role }}</small></span>
+            <a href="{{ url_for('logout') }}" class="btn btn-sm btn-light-nav">Logout</a>
+        </div>
+    </div>
+</header>
+
+<!-- Display Flask flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flashes">
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}" role="alert">
+              <span>{{ message }}</span>
+              <button class="close" type="button" aria-label="Dismiss" onclick="this.parentElement.remove()">&times;</button>
+          </div>
+        {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+    Secure API Communication Records Management &middot; Clare Wambui &middot; DSE-02-8535/2024 &middot; Zetech University
+</footer>
+{% block scripts %}{% endblock %}
+</body>
+</html>

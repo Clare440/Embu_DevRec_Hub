@@ -1,0 +1,1171 @@
+test_1_search (__main__.HubTests.test_1_search) ... C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\sql\schema.py:4296: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore[call-arg, no-any-return, no-untyped-call]  # noqa: E501
+ERROR
+test_2_update_into_duplicate_rejected (__main__.HubTests.test_2_update_into_duplicate_rejected) ... ERROR
+test_2_update_recomputes_hash (__main__.HubTests.test_2_update_recomputes_hash) ... ERROR
+test_3_insert (__main__.HubTests.test_3_insert) ... ERROR
+test_4_delete_and_audit (__main__.HubTests.test_4_delete_and_audit) ... ERROR
+test_5_tamper_detected (__main__.HubTests.test_5_tamper_detected) ... ERROR
+test_6_duplicate_rejected (__main__.HubTests.test_6_duplicate_rejected) ... ERROR
+test_7_login_good_and_bad (__main__.HubTests.test_7_login_good_and_bad) ... ok
+test_7_password_is_hashed (__main__.HubTests.test_7_password_is_hashed) ... ok
+test_7_security_blocks_anonymous (__main__.HubTests.test_7_security_blocks_anonymous) ... ok
+test_dashboard_and_logout (__main__.HubTests.test_dashboard_and_logout) ... ERROR
+
+======================================================================
+ERROR: test_1_search (__main__.HubTests.test_1_search)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 47, in test_1_search
+    self.login().data; self.add().data; self.add(client_name='KCB Bank', api_endpoint='/api/v1/accounts/verify')
+                       ~~~~~~~~^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 19, in add
+    return self.c.post('/insert', data={**REC, **kw}, follow_redirects=True)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1165, in post
+    return self.open(*args, **kw)
+           ~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1148, in open
+    response = self.resolve_redirect(response, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1054, in resolve_redirect
+    return self.open(builder, buffered=buffered)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1114, in open
+    response = self.run_wsgi_app(request.environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 986, in run_wsgi_app
+    rv = run_wsgi_app(self.application, environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1262, in run_wsgi_app
+    app_rv = app(environ, start_response)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1478, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1458, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\app.py", line 102, in search
+    rows = db.session.execute(text("SELECT * FROM inventory")).mappings().all()
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\scoping.py", line 807, in execute
+    return self._proxied.execute(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2473, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in _execute_internal
+    result = conn.execute(
+        statement, params, execution_options=combined_execution_options
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1463, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\sql\elements.py", line 533, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1683, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1837, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 2347, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: inventory
+[SQL: SELECT * FROM inventory]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+
+======================================================================
+ERROR: test_2_update_into_duplicate_rejected (__main__.HubTests.test_2_update_into_duplicate_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 62, in test_2_update_into_duplicate_rejected
+    self.login().data; self.add().data; self.add(client_name='KCB Bank')
+                       ~~~~~~~~^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 19, in add
+    return self.c.post('/insert', data={**REC, **kw}, follow_redirects=True)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1165, in post
+    return self.open(*args, **kw)
+           ~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1148, in open
+    response = self.resolve_redirect(response, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1054, in resolve_redirect
+    return self.open(builder, buffered=buffered)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1114, in open
+    response = self.run_wsgi_app(request.environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 986, in run_wsgi_app
+    rv = run_wsgi_app(self.application, environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1262, in run_wsgi_app
+    app_rv = app(environ, start_response)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1478, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1458, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\app.py", line 102, in search
+    rows = db.session.execute(text("SELECT * FROM inventory")).mappings().all()
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\scoping.py", line 807, in execute
+    return self._proxied.execute(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2473, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in _execute_internal
+    result = conn.execute(
+        statement, params, execution_options=combined_execution_options
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1463, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\sql\elements.py", line 533, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1683, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1837, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 2347, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: inventory
+[SQL: SELECT * FROM inventory]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+
+======================================================================
+ERROR: test_2_update_recomputes_hash (__main__.HubTests.test_2_update_recomputes_hash)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 54, in test_2_update_recomputes_hash
+    self.login().data; self.add().data
+                       ~~~~~~~~^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 19, in add
+    return self.c.post('/insert', data={**REC, **kw}, follow_redirects=True)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1165, in post
+    return self.open(*args, **kw)
+           ~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1148, in open
+    response = self.resolve_redirect(response, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1054, in resolve_redirect
+    return self.open(builder, buffered=buffered)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1114, in open
+    response = self.run_wsgi_app(request.environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 986, in run_wsgi_app
+    rv = run_wsgi_app(self.application, environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1262, in run_wsgi_app
+    app_rv = app(environ, start_response)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1478, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1458, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\app.py", line 102, in search
+    rows = db.session.execute(text("SELECT * FROM inventory")).mappings().all()
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\scoping.py", line 807, in execute
+    return self._proxied.execute(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2473, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in _execute_internal
+    result = conn.execute(
+        statement, params, execution_options=combined_execution_options
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1463, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\sql\elements.py", line 533, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1683, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1837, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 2347, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: inventory
+[SQL: SELECT * FROM inventory]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+
+======================================================================
+ERROR: test_3_insert (__main__.HubTests.test_3_insert)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 38, in test_3_insert
+    self.login().data; self.assertIn(b'Inserted Successfully', self.add().data)
+                                                               ~~~~~~~~^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 19, in add
+    return self.c.post('/insert', data={**REC, **kw}, follow_redirects=True)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1165, in post
+    return self.open(*args, **kw)
+           ~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1148, in open
+    response = self.resolve_redirect(response, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1054, in resolve_redirect
+    return self.open(builder, buffered=buffered)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1114, in open
+    response = self.run_wsgi_app(request.environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 986, in run_wsgi_app
+    rv = run_wsgi_app(self.application, environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1262, in run_wsgi_app
+    app_rv = app(environ, start_response)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1478, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1458, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\app.py", line 102, in search
+    rows = db.session.execute(text("SELECT * FROM inventory")).mappings().all()
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\scoping.py", line 807, in execute
+    return self._proxied.execute(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2473, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in _execute_internal
+    result = conn.execute(
+        statement, params, execution_options=combined_execution_options
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1463, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\sql\elements.py", line 533, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1683, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1837, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 2347, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: inventory
+[SQL: SELECT * FROM inventory]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+
+======================================================================
+ERROR: test_4_delete_and_audit (__main__.HubTests.test_4_delete_and_audit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 67, in test_4_delete_and_audit
+    self.login().data; self.add().data
+                       ~~~~~~~~^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 19, in add
+    return self.c.post('/insert', data={**REC, **kw}, follow_redirects=True)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1165, in post
+    return self.open(*args, **kw)
+           ~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1148, in open
+    response = self.resolve_redirect(response, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1054, in resolve_redirect
+    return self.open(builder, buffered=buffered)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1114, in open
+    response = self.run_wsgi_app(request.environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 986, in run_wsgi_app
+    rv = run_wsgi_app(self.application, environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1262, in run_wsgi_app
+    app_rv = app(environ, start_response)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1478, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1458, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\app.py", line 102, in search
+    rows = db.session.execute(text("SELECT * FROM inventory")).mappings().all()
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\scoping.py", line 807, in execute
+    return self._proxied.execute(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2473, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in _execute_internal
+    result = conn.execute(
+        statement, params, execution_options=combined_execution_options
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1463, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\sql\elements.py", line 533, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1683, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1837, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 2347, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: inventory
+[SQL: SELECT * FROM inventory]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+
+======================================================================
+ERROR: test_5_tamper_detected (__main__.HubTests.test_5_tamper_detected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 73, in test_5_tamper_detected
+    self.login().data; self.add().data
+                       ~~~~~~~~^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 19, in add
+    return self.c.post('/insert', data={**REC, **kw}, follow_redirects=True)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1165, in post
+    return self.open(*args, **kw)
+           ~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1148, in open
+    response = self.resolve_redirect(response, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1054, in resolve_redirect
+    return self.open(builder, buffered=buffered)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1114, in open
+    response = self.run_wsgi_app(request.environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 986, in run_wsgi_app
+    rv = run_wsgi_app(self.application, environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1262, in run_wsgi_app
+    app_rv = app(environ, start_response)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1478, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1458, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\app.py", line 102, in search
+    rows = db.session.execute(text("SELECT * FROM inventory")).mappings().all()
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\scoping.py", line 807, in execute
+    return self._proxied.execute(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2473, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in _execute_internal
+    result = conn.execute(
+        statement, params, execution_options=combined_execution_options
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1463, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\sql\elements.py", line 533, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1683, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1837, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 2347, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: inventory
+[SQL: SELECT * FROM inventory]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+
+======================================================================
+ERROR: test_6_duplicate_rejected (__main__.HubTests.test_6_duplicate_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 43, in test_6_duplicate_rejected
+    self.login().data; self.add().data; r = self.add().data
+                       ~~~~~~~~^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 19, in add
+    return self.c.post('/insert', data={**REC, **kw}, follow_redirects=True)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1165, in post
+    return self.open(*args, **kw)
+           ~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1148, in open
+    response = self.resolve_redirect(response, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1054, in resolve_redirect
+    return self.open(builder, buffered=buffered)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1114, in open
+    response = self.run_wsgi_app(request.environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 986, in run_wsgi_app
+    rv = run_wsgi_app(self.application, environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1262, in run_wsgi_app
+    app_rv = app(environ, start_response)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1478, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1458, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\app.py", line 102, in search
+    rows = db.session.execute(text("SELECT * FROM inventory")).mappings().all()
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\scoping.py", line 807, in execute
+    return self._proxied.execute(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2473, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in _execute_internal
+    result = conn.execute(
+        statement, params, execution_options=combined_execution_options
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1463, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\sql\elements.py", line 533, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1683, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1837, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 2347, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: inventory
+[SQL: SELECT * FROM inventory]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+
+======================================================================
+ERROR: test_dashboard_and_logout (__main__.HubTests.test_dashboard_and_logout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 80, in test_dashboard_and_logout
+    self.login().data; self.add().data; self.assertIn(b'Integrity Verified', self.c.get('/').data)
+                       ~~~~~~~~^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\test_app.py", line 19, in add
+    return self.c.post('/insert', data={**REC, **kw}, follow_redirects=True)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1165, in post
+    return self.open(*args, **kw)
+           ~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1148, in open
+    response = self.resolve_redirect(response, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1054, in resolve_redirect
+    return self.open(builder, buffered=buffered)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\testing.py", line 232, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1114, in open
+    response = self.run_wsgi_app(request.environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 986, in run_wsgi_app
+    rv = run_wsgi_app(self.application, environ, buffered=buffered)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\test.py", line 1262, in run_wsgi_app
+    app_rv = app(environ, start_response)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1478, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1458, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\Downloads\Embu_Claude_files\app.py", line 102, in search
+    rows = db.session.execute(text("SELECT * FROM inventory")).mappings().all()
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\scoping.py", line 807, in execute
+    return self._proxied.execute(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2473, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in _execute_internal
+    result = conn.execute(
+        statement, params, execution_options=combined_execution_options
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1463, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\sql\elements.py", line 533, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1683, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1837, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 2347, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1958, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\CLARE WANJIRU\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: inventory
+[SQL: SELECT * FROM inventory]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+
+----------------------------------------------------------------------
+Ran 11 tests in 14.328s
+
+FAILED (errors=8)
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x000001DDB2A348B0>

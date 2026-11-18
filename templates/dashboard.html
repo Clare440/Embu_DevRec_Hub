@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Dashboard &middot; Embu Dev Hub{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <div>
+        <h1>Dashboard</h1>
+        <p>Overview of API communication records and system integrity.</p>
+    </div>
+    <a href="{{ url_for('search') }}" class="btn">Manage API Records &rarr;</a>
+</div>
+
+<section class="stats">
+    <div class="stat blue">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg></div>
+        <div class="label">Total API Records</div>
+        <div class="value">{{ total_records }}</div>
+        <div class="note">SHA-256 protected</div>
+    </div>
+    <div class="stat green">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div class="label">HMAC Verified</div>
+        <div class="value">{{ verified_count }}<span style="font-size:15px;color:var(--muted);font-weight:500"> / {{ total_records }}</span></div>
+        <div class="note">{% if verified_count == total_records %}All records intact{% else %}{{ total_records - verified_count }} failed verification{% endif %}</div>
+    </div>
+    <div class="stat amber">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></div>
+        <div class="label">Audit Log Entries</div>
+        <div class="value">{{ audit_count }}</div>
+        <div class="note">All actions tracked</div>
+    </div>
+    <div class="stat navy">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+        <div class="label">Security</div>
+        <div class="value sm">SHA-256 + HMAC</div>
+        <div class="note">Integrity &amp; uniqueness</div>
+    </div>
+</section>
+
+<div class="grid-2">
+    <section class="card">
+        <div class="card-header">
+            <div>
+                <h2>Recent API Records</h2>
+                <div class="sub">Latest five entries &middot; SHA-256 uniqueness + HMAC integrity</div>
+            </div>
+            <a href="{{ url_for('search') }}" class="btn btn-ghost btn-sm">View all</a>
+        </div>
+        <div class="table-wrap">
+            <table class="data">
+                <thead><tr><th>Client</th><th>Endpoint</th><th>SHA-256</th><th>Integrity</th></tr></thead>
+                <tbody>
+                {% for r in records %}
+                    <tr>
+                        <td><div class="cell-title">{{ r.client_name }}</div><div class="cell-sub">{{ r.created_at.strftime('%d %b %Y, %H:%M') }}</div></td>
+                        <td><span class="endpoint mono">{{ r.api_endpoint }}</span></td>
+                        <td><span class="hash mono" title="{{ r.sha256_hash }}">{{ r.sha256_hash[:14] }}&hellip;</span></td>
+                        <td>{% if is_verified(r) %}<span class="badge badge-success">Verified</span>{% else %}<span class="badge badge-danger">Tampered</span>{% endif %}</td>
+                    </tr>
+                {% else %}
+                    <tr><td colspan="4">
+                        <div class="empty"><strong>No records yet</strong>Add your first API communication record to get started.</div>
+                    </td></tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="card-header">
+            <div>
+                <h2>Recent Activity</h2>
+                <div class="sub">Audit trail</div>
+            </div>
+        </div>
+        <ul class="timeline">
+            {% for a in audits %}
+            <li>
+                <span class="dot {{ a.action }}"></span>
+                <div>
+                    <div class="t-main"><strong>{{ a.action|capitalize }}</strong> &mdash; {{ a.details }}</div>
+                    <div class="t-time">{{ a.timestamp.strftime('%d %b %Y, %H:%M') }}</div>
+                </div>
+            </li>
+            {% else %}
+            <li><div class="t-main" style="color:var(--muted)">No activity recorded yet.</div></li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>
+{% endblock %}

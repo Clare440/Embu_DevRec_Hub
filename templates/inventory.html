@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% block title %}API Records &middot; Embu Dev Hub{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <div>
+        <h1>API Communication Records</h1>
+        <p>Add, search, edit and remove records. Hashes are regenerated automatically.</p>
+    </div>
+    <button class="btn" type="button" onclick="document.getElementById('add-card').scrollIntoView({behavior:'smooth'}); document.getElementById('client_name').focus();">+ New Record</button>
+</div>
+
+<div class="stack">
+
+    <!-- Search -->
+    <section class="card">
+        <div class="card-body">
+            <form method="GET" action="{{ url_for('search') }}" class="search-row">
+                <div class="input-wrap">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                    <input class="input" type="text" name="q" value="{{ query }}" placeholder="Search by client, endpoint or SHA-256 hash">
+                </div>
+                <button type="submit" class="btn">Search</button>
+                {% if query %}<a class="btn btn-ghost" href="{{ url_for('search') }}">Clear</a>{% endif %}
+            </form>
+        </div>
+    </section>
+
+    <!-- Records table -->
+    <section class="card">
+        <div class="card-header">
+            <div>
+                <h2>Stored Records</h2>
+                <div class="sub">{{ records|length }} record{{ '' if records|length == 1 else 's' }}{% if query %} matching &ldquo;{{ query }}&rdquo;{% endif %}</div>
+            </div>
+        </div>
+        <div class="table-wrap">
+            <table class="data">
+                <thead>
+                    <tr><th>ID</th><th>Client</th><th>Endpoint</th><th>SHA-256</th><th>Status</th><th>Actions</th></tr>
+                </thead>
+                <tbody>
+                {% for r in records %}
+                    <tr>
+                        <td class="mono" style="color:var(--muted)">#{{ r.id }}</td>
+                        <td><div class="cell-title">{{ r.client_name }}</div><div class="cell-sub">{{ r.created_at.strftime('%d %b %Y, %H:%M') }}</div></td>
+                        <td><span class="endpoint mono">{{ r.api_endpoint }}</span></td>
+                        <td><span class="hash mono" title="{{ r.sha256_hash }}">{{ r.sha256_hash[:16] }}&hellip;</span></td>
+                        <td>
+                            <span class="badge badge-info">{{ r.status }}</span>
+                            {% if is_verified(r) %}<span class="badge badge-success">Verified</span>{% else %}<span class="badge badge-danger">Tampered</span>{% endif %}
+                        </td>
+                        <td>
+                            <div class="actions">
+                                <button type="button" class="btn btn-sm btn-outline-primary"
+                                    data-id="{{ r.id }}"
+                                    data-client="{{ r.client_name }}"
+                                    data-endpoint="{{ r.api_endpoint }}"
+                                    data-payload="{{ r.request_payload }}"
+                                    onclick="openEdit(this)">Edit</button>
+                                <form method="POST" action="{{ url_for('delete', id=r.id) }}" onsubmit="return confirm('Delete this record? This will be logged in the audit trail.')">
+                                    <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr><td colspan="6">
+                        <div class="empty">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg>
+                            <strong>No records found</strong>
+                            {% if query %}Try a different search term.{% else %}Add one using the form below.{% endif %}
+                        </div>
+                    </td></tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Add record -->
+    <section class="card" id="add-card">
+        <div class="card-header">
+            <div>
+                <h2>Add New API Communication Record</h2>
+                <div class="sub">A SHA-256 digest and HMAC signature are generated on save</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('insert') }}" class="form-grid">
+                <div class="field">
+                    <label for="client_name">Client Name</label>
+                    <input id="client_name" name="client_name" placehlder="e.g. Bank Name"
+                </div>
+                <div class="field">
+                    <label for="api_endpoint">API Endpoint</label>
+                    <input id="api_endpoint" name="api_endpoint" placeholder="e.g. /api/v1/payments" required>
+                </div>
+                <div class="field full">
+                    <label for="payload">Request Payload (JSON)</label>
+                    <textarea id="payload" name="payload" rows="4" placeholder='{"amount": 1000}' required></textarea>
+                </div>
+                <div class="field full">
+                    <label for="response_sample">Response Sample</label>
+                    <textarea id="response_sample" name="response_sample" rows="3" placeholder='{"status": "success"}'></textarea>
+                    <div class="hint">Optional. Not part of the hash.</div>
+                </div>
+                <div class="full form-actions">
+                    <button type="reset" class="btn btn-ghost">Reset</button>
+                    <button type="submit" class="btn">Save Record &amp; Generate Hashes</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+
+<!-- Edit modal -->
+<dialog id="edit-dialog">
+    <div class="modal-head">
+        <h3>Edit Record <span id="edit-id" class="mono" style="color:var(--muted)"></span></h3>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="document.getElementById('edit-dialog').close()">Close</button>
+    </div>
+    <div class="modal-body">
+        <form id="edit-form" method="POST" class="form-grid">
+            <div class="field">
+                <label for="e_client">Client Name</label>
+                <input id="e_client" name="client_name" required>
+            </div>
+            <div class="field">
+                <label for="e_endpoint">API Endpoint</label>
+                <input id="e_endpoint" name="api_endpoint" required>
+            </div>
+            <div class="field full">
+                <label for="e_payload">Request Payload (JSON)</label>
+                <textarea id="e_payload" name="payload" rows="5" required></textarea>
+                <div class="hint">Saving will recompute the SHA-256 hash and HMAC signature.</div>
+            </div>
+            <div class="full form-actions">
+                <button type="button" class="btn btn-ghost" onclick="document.getElementById('edit-dialog').close()">Cancel</button>
+                <button type="submit" class="btn">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function openEdit(btn) {
+    const d = btn.dataset;
+    document.getElementById('edit-form').action = '/update/' + d.id;
+    document.getElementById('edit-id').textContent = '#' + d.id;
+    document.getElementById('e_client').value = d.client;
+    document.getElementById('e_endpoint').value = d.endpoint;
+    document.getElementById('e_payload').value = d.payload;
+    document.getElementById('edit-dialog').showModal();
+}
+</script>
+{% endblock %}
