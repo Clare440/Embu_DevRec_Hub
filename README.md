@@ -10,6 +10,13 @@ The system provides a simples and secure way to store, search, update and manage
 - User-friendly web interface
 - Built with Python flask
 
+## Basic operation used to manage DataBase recordS
+CRUD
+C - Create
+R - Read
+U - Update
+D - Delete
+
 ## Technologies Used
 - Python (Flask) - programming language for developing the system and flask - help python run the web application
 - HTML, CSS - creating webpages & styling
