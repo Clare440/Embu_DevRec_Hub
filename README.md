@@ -4,7 +4,9 @@ A web-based records management system designed to help organize and track develo
 
 The system provides a simples and secure way to store, search, update and manage records, replacing manual paperwork with a fast digital solution.
 
-## Features
+## API(Application Programming Interface) - Allow 2 different software application to communicate and exchange information.
+
+## Features of Embu DevRec Hub - Record System
 - Add, view, edit and delete records
 - Search records easily
 - User-friendly web interface
@@ -12,10 +14,10 @@ The system provides a simples and secure way to store, search, update and manage
 
 ## Basic operation used to manage DataBase recordS
 CRUD
-C - Create
-R - Read
-U - Update
-D - Delete
+- C - Create
+- R - Read
+- U - Update
+- D - Delete
 
 ## Technologies Used
 - Python (Flask) - programming language for developing the system and flask - help python run the web application
