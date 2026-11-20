@@ -1,6 +1,8 @@
 # Embu DevRec Hub - Records System
 
-A web-based records management system for Embu County to store, manage and retrieve development records.
+A web-based records management system designed to help organize and track development records for Embu County.
+
+The system provides a simples and secure way to store, search, update and manage records, replacing manual paperwork with a fast digital solution.
 
 ## Features
 - Add, view, edit and delete records
